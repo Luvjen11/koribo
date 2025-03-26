@@ -50,15 +50,15 @@ public class FlashcardController {
     // get all flashcards by category
     @GetMapping("/category/{category}")
     public ResponseEntity<List<Flashcard>> getFlashcardsByCategory(
-            @RequestParam Category category) {
+            @PathVariable Category category) {
         return ResponseEntity.ok(flashcardService.getAllFlashcardsByCategory(category));
     }
 
     // get all flashcards by language and category
-    @GetMapping("/language/{language}/category/{category}")
+    @GetMapping("/{language}/{category}")
     public ResponseEntity<List<Flashcard>> getFlashcardsByCategory(
-            @RequestParam Language language,
-            @RequestParam Category category) {
+            @PathVariable Language language,
+            @PathVariable Category category) {
         return ResponseEntity.ok(flashcardService.getAllFlashcardsByLanguageAndCategory(language, category));
     }
 
