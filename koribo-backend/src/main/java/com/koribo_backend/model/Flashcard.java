@@ -21,6 +21,8 @@ public class Flashcard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String question;
-    private String answer;
+    private String word;
+    private String translation;
+    private Language language;
+    private Category category;
 }
