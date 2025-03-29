@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Flashcard from "../components/Flashcard";
+import Flashcard from "./Flashcard";
 import { getAllFlashcards } from "../services/Flashcard";
 
 
