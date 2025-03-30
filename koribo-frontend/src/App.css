@@ -1,3 +1,4 @@
+/* General Reset */
 * {
   margin: 0;
   padding: 0;
@@ -5,40 +6,66 @@
 }
 
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f9f9f9;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #5787f9, #fe9cf9);
+  min-height: 100vh;
+  color: #333;
+  margin: 0;
+  padding: 0;
 }
+
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 90px 20px 20px; 
 }
 
 .page-title {
-  color: #5787f9;
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 30px;
   text-align: center;
-  margin: 30px 0;
-  font-size: 2.5rem;
 }
 
-.flashcard-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
+/* Common button styles */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #5787f9;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
+.btn:hover {
+  background: #fe9cf9;
+}
+
+/* Error and loading states */
 .loading {
   text-align: center;
   font-size: 1.5rem;
-  color: #5787f9;
-  margin: 50px 0;
+  color: white;
+  margin: 100px 0;
 }
 
 .error {
   text-align: center;
-  color: #ff4d4d;
-  margin: 50px 0;
+  color: #e74c3c;
+  background-color: #fde8e7;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin: 100px auto;
+  max-width: 600px;
+}
+
+.no-cards {
+  text-align: center;
+  color: white;
   font-size: 1.2rem;
+  margin: 50px 0;
 }
