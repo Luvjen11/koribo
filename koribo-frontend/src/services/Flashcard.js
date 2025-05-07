@@ -1,7 +1,6 @@
 import axios from "axios";
 
-
-const API_BASE_URL = "http://localhost:8080/koribo/flashcard";
+const API_BASE_URL = "http://localhost:8080/koribo/flashcards";
 
 // Create an axios instance with timeout and better defaults
 const apiClient = axios.create({
@@ -12,7 +11,6 @@ const apiClient = axios.create({
     Accept: "application/json",
   },
 });
-
 
 export const getAllFlashcards = async () => {
     try {
@@ -30,7 +28,22 @@ export const getAllFlashcards = async () => {
     }
   };
 
-export const getFlashcard
+  export const getFlashcardById = async (id) => {
+    try {
+      const response = await apiClient.get(`/${id}`);
+      console.log("Flashcard data received:", response.data); // For debugging
+      return response.data;
+    } catch (error) {
+      console.error("Get flashcard by ID error:", error);
+      if (error.response) {
+        throw new Error(`Server Error: ${error.response.status}`);
+      } else if (error.request) {
+        throw new Error("Network Error");
+      } else {
+        throw new Error("Request configuration Error");
+      }
+    }
+  };
 
 // export const createFlashcard = async () => {
 

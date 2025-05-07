@@ -1,46 +1,128 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Flashcard container */
 .wrapper {
-    position: relative;
-    height: 200px;
-    width: 100%;
-    perspective: 1000px;
-    cursor: pointer;
+  position: relative;
+  height: 330px;
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-card {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: #5787f9;
+  transform-style: preserve-3d;
+  transition: all 0.6s ease-in-out;
+}
+
+.flipped {
+  transform: rotateY(180deg);
+}
+
+.card {
+  height: 100%;
+  width: 100%;
+  background-color: #5787f9;
+  border-top: 2px solid #f4f4f9;
+  border-left: 2px solid #f4f4f9;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  position: absolute;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.word,
+.translation {
+  font-size: 2rem;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  text-align: center;
+  font-weight: 600;
+}
+
+.back.card {
+  background-color: #fe9cf9;
+  transform: rotateY(180deg);
+}
+
+/* Loading and error states */
+.loading-card, .error-card {
+  height: 330px;
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  font-size: 1.2rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.loading-card {
+  background-color: #f4f4f9;
+  color: #5787f9;
+}
+
+.error-card {
+  background-color: #fde8e7;
+  color: #e74c3c;
+}
+
+.single-flashcard-container {
+  max-width: 620px;
+  margin: 0 auto 30px;
+}
+
+.flashcard-instruction {
+  text-align: center;
+  color: white;
+  font-size: 1rem;
+  margin-top: 20px;
+  opacity: 0.8;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .wrapper {
+    height: 280px;
+    max-width: 500px;
   }
   
-  .flip-card {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    background-color: #5787f9;
-    transform-style: preserve-3d;
-    transition: all 0.6s ease-in-out;
+  .loading-card, .error-card {
+    height: 280px;
+    max-width: 500px;
   }
   
-  .flipped {
-    transform: rotateY(180deg);
+  .word, .translation {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    height: 220px;
+    max-width: 320px;
   }
   
-  .card {
-    height: 100%;
-    width: 100%;
-    background-color: #5787f9;
-    border-top: 2px solid #f4f4f9;
-    border-left: 2px solid #f4f4f9;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backface-visibility: hidden;
-    position: absolute;
+  .loading-card, .error-card {
+    height: 220px;
+    max-width: 320px;
   }
   
-  .back.card {
-    background-color: #fe9cf9;
-    transform: rotateY(180deg);
+  .word, .translation {
+    font-size: 1.5rem;
   }
-  
-  .word,
-  .translation {
-    font-size: 1.2rem;
-    color: white;
-    text-align: center;
-  }
+}

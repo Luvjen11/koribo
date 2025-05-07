@@ -49,3 +49,43 @@
       grid-template-columns: 1fr;
     }
   }
+  
+  .flashcard-details {
+    text-align: center;
+    margin: 20px 0;
+    color: white;
+  }
+  
+  .flashcard-language, .flashcard-category {
+    margin: 5px 0;
+    font-size: 1.1rem;
+  }
+  
+  .back-to-flashcards {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: white;
+    color: #5787f9;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .back-to-flashcards:hover {
+    background-color: #f4f4f9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .back-link {
+    display: block;
+    margin-top: 15px;
+    color: #5787f9;
+    text-decoration: none;
+  }
+  
+  .back-link:hover {
+    text-decoration: underline;
+  }
