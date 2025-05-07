@@ -34,6 +34,17 @@ public class FlashcardController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdFlashcard);
     }
 
+    // get flashcard by id
+    @GetMapping("/{id}")
+    public ResponseEntity<Flashcard> getFlashcardById(@PathVariable Long id) {
+        Flashcard flashcard = flashcardService.getFlashcardById(id);
+        if (flashcard != null) {
+            return ResponseEntity.ok(flashcard);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     // get all flashcard
     @GetMapping
     public ResponseEntity<List<Flashcard>> getAllFlashcards() {

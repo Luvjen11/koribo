@@ -30,6 +30,8 @@ export const getAllFlashcards = async () => {
     }
   };
 
+export const getFlashcard
+
 // export const createFlashcard = async () => {
 
 // }
