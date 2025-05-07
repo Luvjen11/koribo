@@ -18,8 +18,8 @@ export const getAllFlashcards = async () => {
     try {
       const response = await apiClient.get("");
       return response.data;
-    } catch (err) {
-        console.error("Get all quotes error:", error);
+    } catch (error) {
+        console.error("Get all flashcards error:", error);
         if (error.response) {
           throw new Error(`Server Error: ${error.response.status}`);
         } else if (error.request) {
@@ -29,3 +29,7 @@ export const getAllFlashcards = async () => {
         }
     }
   };
+
+// export const createFlashcard = async () => {
+
+// }

@@ -5,7 +5,7 @@ import "../styles/FlashcardPage.css";
 
 function FlashcardPage() {
   const [flashcards, setFlashcards] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -15,8 +15,8 @@ function FlashcardPage() {
   const getFlashcards = async () => {
     try {
       setLoading(true);
-      const flashcards = await getAllFlashcards();
-      setFlashcards(flashcards);
+      const data = await getAllFlashcards();
+      setFlashcards(data);
       setError(null);
     } catch (error) {
       setError(error.message || "Something went wrong");
@@ -24,7 +24,7 @@ function FlashcardPage() {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   if (loading) {
     return <div className="loading">Loading flashcards...</div>;
