@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Flashcard from "./Flashcard";
 import { getAllFlashcards } from "../services/Flashcard";
 import "../styles/FlashcardPage.css";
 
 function FlashcardPage() {
   const [flashcards, setFlashcards] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -16,6 +17,7 @@ function FlashcardPage() {
     try {
       setLoading(true);
       const data = await getAllFlashcards();
+      console.log("Fetched flashcards:", data); // For debugging
       setFlashcards(data);
       setError(null);
     } catch (error) {
@@ -27,11 +29,23 @@ function FlashcardPage() {
   };
 
   if (loading) {
-    return <div className="loading">Loading flashcards...</div>;
+    return (
+      <div className="flashcard-page">
+        <div className="container">
+          <div className="loading">Loading flashcards...</div>
+        </div>
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="error">{error}</div>;
+    return (
+      <div className="flashcard-page">
+        <div className="container">
+          <div className="error">{error}</div>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -46,11 +60,25 @@ function FlashcardPage() {
         ) : (
           <div className="flashcard-grid">
             {flashcards.map((card) => (
-              <Flashcard 
-                key={card.id} 
-                word={card.front} 
-                translation={card.back} 
-              />
+              <Link 
+                to={`/koribo/flashcards/${card.id}`} 
+                key={card.id}
+                className="flashcard-link"
+              >
+                <div className="flashcard-item">
+                  {/* Pass the word and translation directly as props */}
+                  <div className="wrapper">
+                    <div className="flip-card">
+                      <div className="front card">
+                        <h1 className="word">{card.word}</h1>
+                      </div>
+                      <div className="back card">
+                        <h1 className="translation">{card.translation}</h1>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
             ))}
           </div>
         )}
