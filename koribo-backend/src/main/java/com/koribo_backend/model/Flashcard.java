@@ -31,7 +31,7 @@ public class Flashcard {
     @Enumerated(EnumType.STRING)
     private Language language;
     @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
+    @JoinColumn(name = "category_id", nullable = true) 
     @JsonBackReference
     private Category category;
 }

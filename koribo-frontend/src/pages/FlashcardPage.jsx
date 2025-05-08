@@ -83,7 +83,9 @@ function FlashcardPage() {
           </div>
         )}
         
+        <Link to="/koribo/flashcards/new">
         <button className="add-flashcard-btn">+ Add New Flashcard</button>
+        </Link>
       </div>
     </div>
   );

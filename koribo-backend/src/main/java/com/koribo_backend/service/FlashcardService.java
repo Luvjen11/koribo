@@ -23,18 +23,14 @@ public class FlashcardService {
 
     // create flashcard
     public Flashcard createFlashcard(Flashcard flashcard) {
-        // Check if the category already exists
-        Category category = categoryRepository.findByName(flashcard.getCategory().getName());
-
-        if (category == null) {
-            // If the category doesn't exist, save it first
-            category = categoryRepository.save(flashcard.getCategory());
+        // Check if category is null or if we need to fetch it
+        if (flashcard.getCategory() != null && flashcard.getCategory().getId() != null) {
+            // Fetch the category from the database
+            Category category = categoryRepository.findById(flashcard.getCategory().getId())
+                .orElse(null);
+            flashcard.setCategory(category);
         }
-
-        // Assign the saved category to the flashcard
-        flashcard.setCategory(category);
-
-        // Save the flashcard
+        
         return flashcardRepository.save(flashcard);
     }
 
