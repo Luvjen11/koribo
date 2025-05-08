@@ -80,3 +80,19 @@ export const createFlashcard = async (flashcardData) => {
     }
   }
 }
+
+export const getFlashcardsByLanguage = async (language) => {
+  try {
+    const response = await apiClient.get(`/language/${language}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Get flashcards by language (${language}) error:`, error);
+    if (error.response) {
+      throw new Error(`Server Error: ${error.response.status}`);
+    } else if (error.request) {
+      throw new Error("Network Error");
+    } else {
+      throw new Error("Request configuration Error");
+    }
+  }
+};
