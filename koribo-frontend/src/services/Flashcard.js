@@ -96,3 +96,19 @@ export const getFlashcardsByLanguage = async (language) => {
     }
   }
 };
+
+export const getFlashcardsByCategory = async (categoryId) => {
+  try {
+    const response = await apiClient.get(`/category/${categoryId}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Get flashcards by category (${categoryId}) error:`, error);
+    if (error.response) {
+      throw new Error(`Server Error: ${error.response.status}`);
+    } else if (error.request) {
+      throw new Error("Network Error");
+    } else {
+      throw new Error("Request configuration Error");
+    }
+  }
+};

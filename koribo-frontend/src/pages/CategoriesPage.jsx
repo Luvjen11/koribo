@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
 import { getAllCategories } from "../services/Category";
-import { getAllFlashcards } from "../services/Flashcard";
+import { getAllFlashcards, getFlashcardsByCategory } from "../services/Flashcard";
 import "../styles/CategoriesPage.css";
 
 function CategoriesPage() {
   const [categories, setCategories] = useState([]);
   const [flashcards, setFlashcards] = useState([]);
+  const [categoryFlashcards, setCategoryFlashcards] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
+  const [loadingCategoryFlashcards, setLoadingCategoryFlashcards] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -18,13 +20,22 @@ function CategoriesPage() {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const [categoriesData, flashcardsData] = await Promise.all([
-        getAllCategories(),
-        getAllFlashcards()
-      ]);
-      
+      const categoriesData = await getAllCategories();
       setCategories(categoriesData);
-      setFlashcards(flashcardsData);
+      
+      // Initialize flashcard counts for each category
+      const flashcardCountsObj = {};
+      for (const category of categoriesData) {
+        try {
+          const categoryFlashcardsData = await getFlashcardsByCategory(category.id);
+          flashcardCountsObj[category.id] = categoryFlashcardsData;
+        } catch (err) {
+          console.error(`Error fetching flashcards for category ${category.id}:`, err);
+          flashcardCountsObj[category.id] = [];
+        }
+      }
+      
+      setCategoryFlashcards(flashcardCountsObj);
       setError(null);
     } catch (error) {
       setError(error.message || "Failed to load data");
@@ -34,9 +45,25 @@ function CategoriesPage() {
     }
   };
 
-  const handleCategoryClick = (category) => {
+  const handleCategoryClick = async (category) => {
     setSelectedCategory(category);
     setShowPopup(true);
+    
+    // If we don't have flashcards for this category yet, fetch them
+    if (!categoryFlashcards[category.id] || categoryFlashcards[category.id].length === 0) {
+      try {
+        setLoadingCategoryFlashcards(true);
+        const flashcardsData = await getFlashcardsByCategory(category.id);
+        setCategoryFlashcards(prev => ({
+          ...prev,
+          [category.id]: flashcardsData
+        }));
+      } catch (error) {
+        console.error(`Error fetching flashcards for category ${category.id}:`, error);
+      } finally {
+        setLoadingCategoryFlashcards(false);
+      }
+    }
   };
 
   const closePopup = () => {
@@ -44,9 +71,7 @@ function CategoriesPage() {
   };
 
   const getCategoryFlashcards = (categoryId) => {
-    return flashcards.filter(card => 
-      card.category && card.category.id === categoryId
-    );
+    return categoryFlashcards[categoryId] || [];
   };
 
   if (loading) {
@@ -81,7 +106,7 @@ function CategoriesPage() {
         ) : (
           <div className="categories-grid">
             {categories.map((category) => {
-              const categoryFlashcards = getCategoryFlashcards(category.id);
+              const categoryFlashcardsCount = getCategoryFlashcards(category.id).length;
               return (
                 <div 
                   key={category.id} 
@@ -93,7 +118,7 @@ function CategoriesPage() {
                   </div>
                   <div className="folder-details">
                     <h3 className="folder-name">{category.name}</h3>
-                    <p className="folder-count">{categoryFlashcards.length} flashcards</p>
+                    <p className="folder-count">{categoryFlashcardsCount} flashcards</p>
                   </div>
                 </div>
               );
@@ -111,7 +136,9 @@ function CategoriesPage() {
               <button className="close-btn" onClick={closePopup}>×</button>
             </div>
             <div className="popup-body">
-              {getCategoryFlashcards(selectedCategory.id).length === 0 ? (
+              {loadingCategoryFlashcards ? (
+                <p className="loading-cards">Loading flashcards...</p>
+              ) : getCategoryFlashcards(selectedCategory.id).length === 0 ? (
                 <p className="no-cards">No flashcards in this category yet.</p>
               ) : (
                 <div className="popup-flashcards">
