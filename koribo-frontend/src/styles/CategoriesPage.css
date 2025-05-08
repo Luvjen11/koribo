@@ -1,0 +1,186 @@
+.categories-page {
+  padding-top: 90px;
+  min-height: 100vh;
+}
+
+.categories-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.page-title {
+  color: white;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 25px;
+  margin: 30px auto;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.category-folder {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.category-folder:hover {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.folder-icon {
+  font-size: 3rem;
+  color: #5787f9;
+  margin-bottom: 15px;
+}
+
+.folder-name {
+  color: white;
+  font-size: 1.2rem;
+  margin: 0 0 5px 0;
+}
+
+.folder-count {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.no-categories {
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+  margin: 40px 0;
+}
+
+.loading, .error {
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+  margin: 40px 0;
+}
+
+/* Popup styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.popup-content {
+  background-color: #2a2a72;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.popup-header h2 {
+  color: white;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.popup-body {
+  padding: 20px;
+}
+
+.popup-flashcards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.popup-flashcard {
+  background-color: white;
+  border-radius: 10px;
+  height: 150px;
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.popup-flashcard:hover {
+  transform: rotateY(180deg);
+}
+
+.popup-card-front,
+.popup-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.popup-card-front {
+  background-color: #5787f9;
+  color: white;
+}
+
+.popup-card-back {
+  background-color: white;
+  color: #2a2a72;
+  transform: rotateY(180deg);
+}
+
+.popup-card-front h3,
+.popup-card-back p {
+  margin: 0;
+  text-align: center;
+  word-break: break-word;
+}
+
+.no-cards {
+  text-align: center;
+  color: white;
+  font-size: 1.1rem;
+  margin: 30px 0;
+}

@@ -5,6 +5,7 @@ import SingleFlashcard from './pages/SingleFlashcard';
 import NewFlashcard from './pages/NewFlashcard';
 import "./App.css"
 import Navbar from './pages/Navbar'
+import CategoriesPage from './pages/CategoriesPage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/koribo/flashcards" element={<FlashcardPage />} />
           <Route path="/koribo/flashcards/new" element={<NewFlashcard />} />
           <Route path="/koribo/flashcards/:id" element={<SingleFlashcard />} />
+          <Route path="/koribo/categories" element={<CategoriesPage />} />
         </Routes>
       </Router>
     </>
