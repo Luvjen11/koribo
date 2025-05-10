@@ -10,7 +10,8 @@ const Home = () => {
           <h1>Welcome to Koribo</h1>
           <p>Your ultimate Igbo and Korean learning platform</p>
           <Link to="/koribo/flashcards">
-            <button className="cta-button">View Flashcards</button>
+            <button className="cta-button">View Igbo</button>
+            <button className="cta-button">View Korean</button>
           </Link>
         </div>
       </div>
