@@ -1,0 +1,272 @@
+.quiz-page {
+  padding-top: 90px;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.page-title {
+  color: white;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.quiz-progress {
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.question-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.question-text {
+  color: white;
+  font-size: 1.4rem;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.option {
+  padding: 15px 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.option:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.option.selected {
+  border-color: #5787f9;
+  background-color: rgba(87, 135, 249, 0.2);
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.nav-btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.prev-btn {
+  background-color: #666;
+  color: white;
+}
+
+.prev-btn:hover:not(:disabled) {
+  background-color: #555;
+}
+
+.next-btn, .submit-btn {
+  background-color: #5787f9;
+  color: white;
+}
+
+.next-btn:hover:not(:disabled), .submit-btn:hover:not(:disabled) {
+  background-color: #4a76e0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nav-btn:disabled {
+  background-color: #444;
+  color: #777;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.question-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #444;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background-color: #5787f9;
+  transform: scale(1.2);
+}
+
+.dot.answered {
+  background-color: #666;
+}
+
+.dot.active.answered {
+  background-color: #5787f9;
+}
+
+/* Quiz Results Styles */
+.quiz-results {
+  text-align: center;
+}
+
+.score-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 30px;
+  margin: 30px 0;
+}
+
+.score {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #5787f9;
+  margin-bottom: 10px;
+}
+
+.score-text {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.questions-review {
+  margin: 40px 0;
+  text-align: left;
+}
+
+.questions-review h2 {
+  color: white;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.question-review {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+.question-review h3 {
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.question-review p {
+  color: #e0e0e0;
+  margin: 8px 0;
+}
+
+.question-review.correct {
+  border-left: 4px solid #4CAF50;
+}
+
+.question-review.incorrect {
+  border-left: 4px solid #f44336;
+}
+
+.quiz-actions {
+  margin-top: 30px;
+}
+
+.back-btn {
+  padding: 12px 25px;
+  background-color: #5787f9;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #4a76e0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.loading {
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+  margin: 50px 0;
+}
+
+.error-message {
+  background-color: rgba(255, 0, 0, 0.2);
+  color: #ffcccc;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 30px 0;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 1.8rem;
+  }
+  
+  .question-text {
+    font-size: 1.2rem;
+  }
+  
+  .option {
+    padding: 12px 15px;
+  }
+  
+  .nav-btn {
+    padding: 10px 20px;
+  }
+  
+  .score {
+    font-size: 3rem;
+  }
+}
+
+.submitting-message {
+    text-align: center;
+    color: #5787f9;
+    font-size: 0.9rem;
+    margin: 10px 0;
+    font-style: italic;
+  }

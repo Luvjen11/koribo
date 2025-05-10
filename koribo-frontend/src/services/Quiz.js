@@ -33,4 +33,53 @@ export const createQuiz = async (quizData) => {
     }
   };
 
-
+  export const getQuizById = async (id) => {
+    try {
+      const response = await apiClient.get(`/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Get quiz by ID error:`, error);
+      if (error.response) {
+        throw new Error(`Server Error: ${error.response.status}`);
+      } else if (error.request) {
+        throw new Error("Network Error");
+      } else {
+        throw new Error("Request configuration Error");
+      }
+    }
+  };
+  
+  export const submitAnswer = async (quizId, questionId, userAnswer) => {
+    try {
+      const response = await apiClient.post(`/${quizId}/submit`, {
+        questionId,
+        userAnswer
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Submit answer error:", error);
+      if (error.response) {
+        throw new Error(`Server Error: ${error.response.status}`);
+      } else if (error.request) {
+        throw new Error("Network Error");
+      } else {
+        throw new Error("Request configuration Error");
+      }
+    }
+  };
+  
+  export const evaluateQuiz = async (quizId) => {
+    try {
+      const response = await apiClient.get(`/${quizId}/evaluate`);
+      return response.data;
+    } catch (error) {
+      console.error("Evaluate quiz error:", error);
+      if (error.response) {
+        throw new Error(`Server Error: ${error.response.status}`);
+      } else if (error.request) {
+        throw new Error("Network Error");
+      } else {
+        throw new Error("Request configuration Error");
+      }
+    }
+  };
