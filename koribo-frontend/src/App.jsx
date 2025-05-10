@@ -8,6 +8,7 @@ import Navbar from './pages/Navbar'
 import CategoriesPage from './pages/CategoriesPage';
 import StartQuizPage from "./pages/StartQuizPage";
 import QuizPage from "./pages/QuizPage";
+import QuizHistoryPage from "./pages/QuizHistoryPage";
 
 function App() {
   return (
@@ -21,8 +22,9 @@ function App() {
           <Route path="/koribo/flashcards/new" element={<NewFlashcard />} />
           <Route path="/koribo/flashcards/:id" element={<SingleFlashcard />} />
           <Route path="/koribo/categories" element={<CategoriesPage />} />
-          <Route path="/koribo/quizzes" element={<StartQuizPage />} />
+          <Route path="/koribo/quizzes/new" element={<StartQuizPage />} />
           <Route path="/koribo/quizzes/:id" element={<QuizPage />} />
+          <Route path="/koribo/quizzes" element={<QuizHistoryPage />} />
         </Routes>
       </Router>
     </>

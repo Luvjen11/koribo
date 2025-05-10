@@ -83,3 +83,20 @@ export const createQuiz = async (quizData) => {
       }
     }
   };
+
+  export const getAllQuizzes = async (language = null) => {
+    try {
+      const url = language ? `?language=${language}` : '';
+      const response = await apiClient.get(url);
+      return response.data;
+    } catch (error) {
+      console.error("Get all quizzes error:", error);
+      if (error.response) {
+        throw new Error(`Server Error: ${error.response.status}`);
+      } else if (error.request) {
+        throw new Error("Network Error");
+      } else {
+        throw new Error("Request configuration Error");
+      }
+    }
+  };
