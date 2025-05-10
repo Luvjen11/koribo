@@ -8,7 +8,7 @@ const Home = () => {
       <div className="hero-section">
         <div className="hero-content">
           <h1>Welcome to Koribo</h1>
-          <p>Your ultimate flashcard learning platform</p>
+          <p>Your ultimate Igbo and Korean learning platform</p>
           <Link to="/koribo/flashcards">
             <button className="cta-button">View Flashcards</button>
           </Link>
@@ -21,7 +21,7 @@ const Home = () => {
           <div className="features-grid">
             <div className="feature-card">
               <h3>Learn Languages</h3>
-              <p>Expand your vocabulary with our language flashcards</p>
+              <p>Expand your vocabulary with language flashcards</p>
             </div>
             <div className="feature-card">
               <h3>Track Progress</h3>
@@ -36,7 +36,7 @@ const Home = () => {
       </section>
 
       <footer className="home-footer">
-        <p>&copy; 2023 Koribo. All rights reserved.</p>
+        <p>&copy; 2025 Koribo. All rights reserved.</p>
       </footer>
     </div>
   );
