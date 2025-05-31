@@ -1,64 +1,102 @@
 .home-container {
-  padding-top: 70px; /* Account for navbar height */
+  padding-top: 70px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
 }
 
 .hero-section {
   text-align: center;
   padding: 100px 20px 80px;
-  color: #fe9cf9;
+  background: linear-gradient(135deg, #5787f9 0%, #fe9cf9 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/pattern.svg') center/cover;
+  opacity: 0.1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .hero-content h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .hero-content p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
+  font-size: 1.4rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
 }
 
 .cta-button {
-  background-color: white;
-  color: #5787f9;
-  border: none;
-  padding: 12px 30px;
-  font-size: 1.1rem;
+  padding: 15px 40px;
+  font-size: 1.2rem;
   border-radius: 30px;
   cursor: pointer;
   font-weight: bold;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+
+.cta-button.primary {
+  background-color: white;
+  color: #5787f9;
+}
+
+.cta-button.secondary {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
 }
 
 .cta-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  background-color: #f4f4f9;
 }
 
 .features-section {
-  padding: 80px 0;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 30px 30px 0 0;
+  padding: 100px 0;
+  background-color: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .features-section h2 {
   font-size: 2.5rem;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
   color: #5787f9;
   text-align: center;
 }
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
 }
 
 .feature-card {
@@ -67,6 +105,7 @@
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease;
+  text-align: center;
 }
 
 .feature-card:hover {
@@ -79,11 +118,80 @@
   color: #5787f9;
 }
 
-.home-footer {
+.how-it-works {
+  padding: 100px 0;
+  background-color: #f8f9fa;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.step-card {
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   text-align: center;
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.95);
-  color: #666;
+  position: relative;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  background-color: #5787f9;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0 auto 20px;
+}
+
+.home-footer {
+  background-color: #2c3e50;
+  color: white;
+  padding: 60px 0 20px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-section h4 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #fe9cf9;
+}
+
+.footer-section a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 10px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.footer-section a:hover {
+  opacity: 1;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @media (max-width: 768px) {
@@ -91,7 +199,22 @@
     font-size: 2.5rem;
   }
   
-  .features-grid {
+  .hero-content p {
+    font-size: 1.2rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .features-grid,
+  .steps-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
   }
 }
