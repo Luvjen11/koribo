@@ -19,7 +19,8 @@ public class ContentSection {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private String type; // TEXT, IMAGE, etc.
+    @Enumerated(EnumType.STRING)
+    private ContentSectionType type;
     
     @Column(length = 4000)
     private String text;

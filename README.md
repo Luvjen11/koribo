@@ -222,3 +222,53 @@ And Korean because I wish to learn korean and connect with a different culture f
 ---
 
 Koribo is an ongoing project aimed at preserving and promoting the Igbo language through interactive digital learning. Contributions and feedback are welcome!
+
+## Testing
+
+### Backend Testing
+The backend uses JUnit 5 and Mockito for testing. Tests are organized by layer:
+
+- Service Layer Tests: Test business logic in isolation using mocks
+- Repository Layer Tests: Test database operations
+- Controller Layer Tests: Test API endpoints
+
+To run the tests:
+```bash
+cd koribo-backend
+mvn test
+```
+
+### Test Structure
+- Unit Tests: Test individual components in isolation
+- Integration Tests: Test component interactions
+- Test Coverage: Aim for high test coverage, especially for critical business logic
+
+### Writing Tests
+1. Service Layer Tests:
+   - Use `@Mock` for dependencies
+   - Use `@InjectMocks` for the service being tested
+   - Follow AAA pattern (Arrange, Act, Assert)
+   - Test both success and failure scenarios
+
+2. Repository Layer Tests:
+   - Use `@DataJpaTest` for repository tests
+   - Test CRUD operations
+   - Test custom queries
+
+3. Controller Layer Tests:
+   - Use `@WebMvcTest` for controller tests
+   - Test HTTP methods and responses
+   - Test request validation
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Write tests for new features
+4. Commit your changes
+5. Push to the branch
+6. Create a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
