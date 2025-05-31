@@ -95,7 +95,7 @@ function NewFlashcard() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!formData.word || !formData.translation || !formData.language) {
+    if (!formData.word || !formData.translation || !formData.language || !formData.categoryId) {
       setError("Please fill in all required fields");
       return;
     }
@@ -210,14 +210,15 @@ function NewFlashcard() {
           </div>
           
           <div className="form-group">
-            <label htmlFor="categoryId">Category</label>
+            <label htmlFor="categoryId">Category*</label>
             <select
               id="categoryId"
               name="categoryId"
               value={formData.categoryId}
               onChange={handleCategoryChange}
+              required
             >
-              <option value="">Select a category (optional)</option>
+              <option value="">Select a category</option>
               {categories.map((category) => (
                 <option key={category.id} value={category.id}>
                   {category.name}

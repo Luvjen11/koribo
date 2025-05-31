@@ -6,6 +6,7 @@
 - [Installation & Setup](#installation--setup)
 - [Requirements](#requirements)
 - [Core Features](#core-features)
+- [Data Models](#data-models)
 - [User Story](#user-story)
 - [API Endpoints](#api-endpoints)
 
@@ -23,6 +24,7 @@ And Korean because I wish to learn korean and connect with a different culture f
 - **Progressive Learning Path**: Content is structured in modules with ordered lessons that build upon previous knowledge
 - **Flashcard System**: Interactive flashcards help users memorize vocabulary and phrases
 - **Cultural Context**: Lessons incorporate cultural elements, traditions, and historical context
+- **Interactive Quizzes**: Test knowledge through dynamically generated quizzes based on learned content
 
 ## Technologies Used
 
@@ -108,29 +110,72 @@ And Korean because I wish to learn korean and connect with a different culture f
 ## Core Features
 
 ### MVP (Minimum Viable Product)
+- Module-based learning structure with progressive lessons
+- Interactive story-based lessons with cultural context
 - Flashcard system for vocabulary practice
-- Quizzes created based on the flashcards
-- Progress tracking
+- Dynamic quiz generation based on learned content
+- Progress tracking and completion status
+- Category-based organization of flashcards
 
 ### Post-MVP Features
-- Module-based learning structure
-- Lesson content with cultural context
 - Audio pronunciation guides
+- User progress analytics
+- Social features for language exchange
+- Mobile application
+- Offline mode support
+
+## Data Models
+
+### Module
+- Represents a collection of related lessons
+- Contains metadata like name, description, and language
+- Maintains ordered list of lessons
+- Supports both Igbo and Korean language tracks
+
+### Lesson
+- Contains story-based content and cultural notes
+- Includes multimedia elements (images, audio)
+- Associated with a specific module
+- Contains a set of flashcards for vocabulary practice
+- Tracks completion status and progress
+
+### ContentSection
+- Embedded within lessons
+- Supports different types (STORY, CULTURAL_NOTE)
+- Contains rich text content (up to 4000 characters)
+- Can include images and audio references
+
+### Flashcard
+- Contains word and translation
+- Associated with a category and optional lesson
+- Supports multiple languages (Igbo, Korean)
+- Includes context and mnemonic aids
+- Can have associated images and audio
+
+### Category
+- Organizes flashcards by topic or theme
+- Unique name constraint
+- Bidirectional relationship with flashcards
+- Automatically created for lesson-specific vocabulary
+
+### Quiz
+- Dynamically generated from flashcards
+- Supports multiple-choice questions
+- Tracks completion status and score
+- Language-specific quiz generation
+- Randomizes question order and options
 
 ## User Story
 
-1. **Registration**: New users create an account to access the learning platform
-2. **Module Selection**: Users browse available modules based on their interests or skill level
-3. **Lesson Progression**: Users work through lessons in sequential order, unlocking new content as they progress
+1. **Module Selection**: Users browse available modules based on their interests or skill level
+2. **Lesson Progression**: Users work through lessons in sequential order, unlocking new content as they progress
+3. **Story Learning**: Users engage with cultural stories and notes to learn language in context
 4. **Vocabulary Practice**: Users review flashcards to reinforce vocabulary learning
-5. **Progress Review**: Users can view their learning statistics and track their progress
-6. **Cultural Immersion**: Users gain cultural context through stories and historical information
+5. **Knowledge Testing**: Users take quizzes to test their understanding
+6. **Progress Tracking**: Users can view their learning statistics and track their progress
+7. **Category Organization**: Users can browse flashcards by categories for focused study
 
 ## API Endpoints
-
-### Authentication
-- `POST /api/auth/register` - Register a new user
-- `POST /api/auth/login` - Authenticate a user and receive JWT token
 
 ### Modules
 - `GET /koribo/modules` - Get all modules
@@ -154,6 +199,20 @@ And Korean because I wish to learn korean and connect with a different culture f
 - `POST /koribo/flashcards?lessonId={lessonId}` - Create a new flashcard 
 - `PUT /koribo/flashcards/{id}` - Update a flashcard 
 - `DELETE /koribo/flashcards/{id}` - Delete a flashcard 
+
+### Categories
+- `GET /koribo/categories` - Get all categories
+- `GET /koribo/categories/{id}` - Get a specific category by ID
+- `POST /koribo/categories` - Create a new category
+- `PUT /koribo/categories/{id}` - Update a category
+- `DELETE /koribo/categories/{id}` - Delete a category
+
+### Quizzes
+- `GET /koribo/quizzes` - Get all quizzes
+- `GET /koribo/quizzes/{id}` - Get a specific quiz by ID
+- `POST /koribo/quizzes` - Create a new quiz
+- `PUT /koribo/quizzes/{id}` - Update a quiz
+- `DELETE /koribo/quizzes/{id}` - Delete a quiz
 
 ### User Progress
 - `GET /koribo/progress` - Get current user's progress

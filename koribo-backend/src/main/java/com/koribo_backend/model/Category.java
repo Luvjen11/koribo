@@ -15,6 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.util.ArrayList;
 
 @AllArgsConstructor
 @Getter
@@ -31,7 +32,7 @@ public class Category {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @JsonManagedReference
+    @JsonManagedReference("category-flashcards") 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Flashcard> flashcards;
+    private List<Flashcard> flashcards = new ArrayList<>(); 
 }

@@ -17,7 +17,8 @@ const Navbar = () => {
             <Link to="/koribo/flashcards">Flashcards</Link>
             <Link to="/koribo/quizzes">Quiz</Link>
             <Link to="/koribo/categories">Categories</Link>
-          </>
+            <Link to="/koribo/modules">Modules</Link>
+            </>
       </div>
     </nav>
   );

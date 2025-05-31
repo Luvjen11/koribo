@@ -5,6 +5,7 @@ import com.koribo_backend.model.Language;
 import com.koribo_backend.service.ModuleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,13 +41,13 @@ public class ModuleController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Module> createModule(@RequestBody Module module) {
         Module createdModule = moduleService.createModule(module);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdModule);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Module> updateModule(
             @PathVariable Long id, @RequestBody Module moduleDetails) {
         try {

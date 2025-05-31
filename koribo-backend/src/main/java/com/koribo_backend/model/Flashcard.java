@@ -1,14 +1,6 @@
 package com.koribo_backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,22 +14,35 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Entity
 @Table(name = "flashcards")
 public class Flashcard {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private String word;
+    
     private String translation;
+    
     @Enumerated(EnumType.STRING)
     private Language language;
+    
+    private String context;
+    
+    private String mnemonic;
+    
+    private String imageUrl;
+    
+    private String audioUrl;
+    
+    private Integer orderIndex;
+    
     @ManyToOne
-    @JoinColumn(name = "category_id", nullable = true) 
-    @JsonBackReference
+    @JoinColumn(name = "category_id", nullable = false) 
+    @JsonBackReference("category-flashcards")
     private Category category;
 
+    @JsonBackReference("lesson-flashcards")
     @ManyToOne
-    @JoinColumn(name = "lesson_id")
-    @JsonBackReference
+    @JoinColumn(name = "lesson_id", nullable = true)
     private Lesson lesson;
-
 }

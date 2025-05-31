@@ -1,0 +1,674 @@
+:root {
+  --primary-color: #5787f9;
+  --secondary-color: #fe9cf9;
+  --background-color: #f8f9fa;
+  --card-background: #ffffff;
+  --text-color: #333333;
+  --accent-color: #5787f9;
+}
+
+.lesson-detail {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  padding-top: 90px; /* Add padding for navbar */
+}
+
+.lesson-header {
+  position: relative;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.lesson-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+}
+
+.lesson-header-content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.lesson-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.lesson-module,
+.lesson-language {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.lesson-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.lesson-header p {
+  font-size: 1.1rem;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.lesson-container {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 2rem;
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-height: calc(100vh - 200px); /* Ensure minimum height */
+}
+
+.lesson-sidebar {
+  border-right: 1px solid #e9ecef;
+  padding-right: 2rem;
+}
+
+.sidebar-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.section-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tab-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #666;
+  transition: all 0.2s;
+}
+
+.tab-button:hover {
+  background: #f8f9fa;
+  color: #333;
+}
+
+.tab-button.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+.section-count {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+.lesson-content {
+  min-height: 500px;
+}
+
+.content-sections {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.content-section {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text-section .section-content {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+  white-space: pre-wrap;
+}
+
+.image-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.image-section img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.image-caption {
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+  text-align: center;
+}
+
+.flashcards-section {
+  padding: 1rem 0;
+}
+
+.flashcards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.flashcard-card {
+  position: relative;
+  height: 200px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flashcard-front,
+.flashcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: transform 0.6s;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.flashcard-front {
+  background: var(--primary-color);
+  color: white;
+}
+
+.flashcard-back {
+  background: #f8f9fa;
+  color: #333;
+  transform: rotateY(180deg);
+}
+
+.flashcard-card:hover .flashcard-front {
+  transform: rotateY(180deg);
+}
+
+.flashcard-card:hover .flashcard-back {
+  transform: rotateY(0);
+}
+
+.flashcard-front h4,
+.flashcard-back h4 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.flashcard-language,
+.flashcard-category {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.no-content {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+  font-style: italic;
+}
+
+.loading, .error-message, .error {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+}
+
+.error-message, .error {
+  color: #dc3545;
+}
+
+.loading {
+  color: #666;
+}
+
+/* Sidebar styles */
+.lesson-sidebar {
+  background-color: var(--card-background);
+  padding: 2rem 1rem;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 70px; /* Match navbar height */
+  height: calc(100vh - 70px);
+  overflow-y: auto;
+}
+
+.lesson-sidebar h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+.exercises-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.exercise {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.03);
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.exercise:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.exercise.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.exercise.completed {
+  background-color: rgba(87, 135, 249, 0.1);
+  color: var(--primary-color);
+}
+
+.exercise-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  margin-right: 1rem;
+  font-weight: bold;
+}
+
+.exercise.active .exercise-number {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Main content styles */
+.lesson-content {
+  padding: 2rem 3rem;
+}
+
+.lesson-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #666;
+  font-style: italic;
+  border-left: 3px solid var(--secondary-color);
+  padding-left: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Content section styles */
+.content-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background-color: var(--card-background);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.content-section h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.content-section p {
+  line-height: 1.6;
+}
+
+.content-section.story {
+  border-left: 4px solid var(--primary-color);
+}
+
+.content-section.cultural_note {
+  border-left: 4px solid var(--secondary-color);
+  background-color: rgba(254, 156, 249, 0.05);
+}
+
+/* Flashcard styles */
+.flashcard-view {
+  margin-bottom: 2rem;
+}
+
+.flashcard-view h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.flashcard {
+  background-color: var(--card-background);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.flashcard-front, .flashcard-back {
+  margin-bottom: 1.5rem;
+}
+
+.flashcard-front h3, .flashcard-back h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.flashcard-front img, .flashcard-back img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 1rem auto;
+  display: block;
+  max-height: 200px;
+}
+
+.flashcard-context, .flashcard-mnemonic {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.flashcard-context {
+  background-color: rgba(87, 135, 249, 0.1);
+}
+
+.flashcard-mnemonic {
+  background-color: rgba(254, 156, 249, 0.1);
+}
+
+.flashcard-context h4, .flashcard-mnemonic h4 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.flashcard-progress {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+/* Quiz styles */
+.quiz-view {
+  margin-bottom: 2rem;
+}
+
+.quiz-view h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.quiz-container {
+  background-color: var(--card-background);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.quiz-question {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.quiz-question h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.quiz-question p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.quiz-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.quiz-option {
+  padding: 1rem;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.quiz-option:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.quiz-option.correct {
+  background-color: rgba(76, 175, 80, 0.1);
+  border-color: #4caf50;
+}
+
+.quiz-option.incorrect {
+  background-color: rgba(244, 67, 54, 0.1);
+  border-color: #f44336;
+}
+
+/* Button styles */
+.next-button, .complete-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: block;
+  margin: 2rem auto 0;
+}
+
+.next-button:hover, .complete-button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+/* Navigation buttons */
+.lesson-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.back-button, .next-lesson-button {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.back-button {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--text-color);
+}
+
+.next-lesson-button {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.back-button:hover, .next-lesson-button:hover {
+  transform: translateY(-2px);
+}
+
+.next-lesson-button:hover {
+  background-color: var(--primary-color);
+}
+
+/* Loading and error states */
+.loading, .error-message, .error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  padding-top: 70px;
+}
+
+.no-flashcards {
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--card-background);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.start-button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.start-button:hover {
+  background: var(--secondary-color);
+}
+
+.content-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+}
+
+.content-display {
+  flex: 1;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.nav-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  min-width: 100px;
+}
+
+.nav-button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.nav-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.content-progress {
+  position: absolute;
+  bottom: -30px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.content-section {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section-content {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.section-image {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.section-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.section-audio {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.section-audio audio {
+  width: 100%;
+  max-width: 400px;
+}

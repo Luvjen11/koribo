@@ -1,0 +1,143 @@
+:root {
+  --primary-color: #5787f9;
+  --secondary-color: #fe9cf9;
+  --background-color: #f8f9fa;
+  --card-background: #ffffff;
+  --text-color: #333333;
+  --accent-color: #5787f9;
+}
+
+.modules-dashboard {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  padding: 2rem;
+  /* Add more top padding to prevent navbar overlap */
+  padding-top: 100px;
+  margin-top: 0;
+}
+
+.modules-dashboard .dashboard-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.modules-dashboard .dashboard-header h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.modules-dashboard .dashboard-header p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #666;
+}
+
+.modules-dashboard .modules-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.modules-dashboard .modules-container .module-card {
+  background-color: var(--card-background);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modules-dashboard .modules-container .module-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.modules-dashboard .modules-container .module-card .module-image {
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+}
+
+.modules-dashboard .modules-container .module-card .module-info {
+  padding: 1.5rem;
+}
+
+.modules-dashboard .modules-container .module-card .module-info .module-level {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.modules-dashboard .modules-container .module-card .module-info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  color: var(--primary-color);
+}
+
+.modules-dashboard .modules-container .module-card .module-info p {
+  margin-bottom: 1.5rem;
+  color: #666;
+}
+
+.modules-dashboard .modules-container .module-card .module-info .module-progress {
+  margin-bottom: 1.5rem;
+}
+
+.modules-dashboard .modules-container .module-card .module-info .module-progress .progress-bar {
+  height: 8px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.modules-dashboard .modules-container .module-card .module-info .module-progress .progress-bar .progress {
+  height: 100%;
+  background-color: var(--secondary-color);
+  border-radius: 4px;
+}
+
+.modules-dashboard .modules-container .module-card .module-info .module-progress span {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.modules-dashboard .modules-container .module-card .module-info .start-button {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.modules-dashboard .modules-container .module-card .module-info .start-button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.no-modules {
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--card-background);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.loading, .error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
